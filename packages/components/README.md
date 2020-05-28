@@ -11,3 +11,4 @@
 - [Theme](theme)
 - [ScalePanel](scale-panel)
 - [Animation](animation)
+- [FileInput](file-input)
