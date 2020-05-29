@@ -11,4 +11,5 @@
 - [Theme](theme)
 - [ScalePanel](scale-panel)
 - [Animation](animation)
+- [Dropzone](dropzone)
 - [FileInput](file-input)
