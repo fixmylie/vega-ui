@@ -7,6 +7,8 @@ import { withThemes } from 'storybook-addon-themes';
 import { withMetadata } from './with-metadata';
 import { VegaThemeDecorator } from './with-themes';
 
+import './Storybook.css';
+
 document.documentElement.lang = 'ru';
 document.body.style.margin = '0px';
 
@@ -26,17 +28,13 @@ const themes = [
   },
 ];
 
-addParameters({ themes: { list: themes, Decorator: VegaThemeDecorator } });
+addParameters({
+  themes: { list: themes, Decorator: VegaThemeDecorator },
+});
 addDecorator(withMetadata);
 addDecorator(withThemes);
 addDecorator(withKnobs);
 addDecorator(withPerformance);
 addDecorator(withA11y);
 
-function loadStories(): void {
-  const req = require.context('../packages', true, /\.stories\.tsx$/);
-
-  req.keys().forEach(req);
-}
-
-configure(loadStories, module);
+configure(require.context('../packages', true, /\.stories\.(tsx|mdx)$/), module);

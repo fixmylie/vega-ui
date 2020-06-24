@@ -1,0 +1,20 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+
+import { Theme, presetGpnDark } from './Theme';
+import { Button } from '../../button/src';
+
+<Meta title="MDX/Theme" component={Theme} />
+
+# Theme
+
+Компонент-обертка для [компонента Theme из дизайн-системы ГПН](https://gpn-prototypes.github.io/ui-kit/?path=/docsx/ui-kit-theme--documentation)
+
+<Props of={Theme} />
+
+<Preview>
+  <Story name="theme-default">
+    <Theme preset={presetGpnDark}>
+      <Button label="Button" size="m" />
+    </Theme>
+  </Story>
+</Preview>

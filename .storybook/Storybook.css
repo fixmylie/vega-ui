@@ -1,0 +1,9 @@
+.token {
+  .tag {
+    margin-right: 4px;
+  }
+
+  .attr-name {
+    margin-left: 4px;
+  }
+}

@@ -1,7 +1,8 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const path = require('path');
 
 module.exports = {
-  stories: ['../packages/**/*.stories.(tsx)'],
+  stories: ['../packages/**/*.stories.(tsx|mdx)'],
   addons: [
     '@storybook/addon-links/register',
     '@storybook/addon-knobs/register',
@@ -10,6 +11,15 @@ module.exports = {
     'storybook-addon-themes/register',
     '@storybook/addon-a11y/register',
     '@storybook/addon-docs/register',
+  ],
+  presets: [
+    { name: '@storybook/addon-docs/preset', options: { configureJSX: true } },
+    // {
+    //   name: '@storybook/preset-typescript',
+    //   options: {
+    //     include: [path.resolve(__dirname, '../packages')],
+    //   },
+    // },
   ],
   webpackFinal: async (config) => {
     // eslint-disable-next-line no-param-reassign
@@ -23,6 +33,12 @@ module.exports = {
           loader: 'ts-loader',
           options: {
             transpileOnly: true,
+          },
+        },
+        {
+          loader: 'react-docgen-typescript-loader',
+          options: {
+            tsconfigPath: path.resolve('tsconfig.storybook.json'),
           },
         },
         {
@@ -53,23 +69,6 @@ module.exports = {
         },
       ],
     });
-
-    config.module.rules.push({
-      test: /\.mdx$/,
-      use: [
-        {
-          loader: 'babel-loader',
-          options: {
-            plugins: ['@babel/plugin-transform-react-jsx'],
-          },
-        },
-        {
-          loader: '@mdx-js/loader',
-          options: {},
-        },
-      ],
-    });
-
     // eslint-disable-next-line no-param-reassign
     config.resolve.plugins = [
       new TsconfigPathsPlugin({
@@ -80,7 +79,7 @@ module.exports = {
     // eslint-disable-next-line no-param-reassign
     config.devServer = { stats: { warningsFilter: /export .* was not found in/ } };
 
-    config.resolve.extensions.push('.ts', '.tsx', '.json');
+    config.resolve.extensions.push('.ts', '.tsx', '.json', 'mdx');
 
     return config;
   },

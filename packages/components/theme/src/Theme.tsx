@@ -14,7 +14,7 @@ export type VegaThemeProps = {
   children: React.ReactNode;
 } & ThemeProps;
 
-const Theme: React.FC<ThemeProps> = ({ children, preset, ...restProps }) => {
+const Theme: React.FC<VegaThemeProps> = ({ children, preset, ...restProps }: VegaThemeProps) => {
   return (
     <BaseTheme preset={preset} {...restProps}>
       {children}
