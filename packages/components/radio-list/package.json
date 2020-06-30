@@ -21,6 +21,8 @@
     "react": "^16.8.0"
   },
   "dependencies": {
-    "bem-cn": "^3.0.1"
+    "bem-cn": "^3.0.1",
+    "@gpn-prototypes/vega-icons": "^0.1.3",
+    "@gpn-prototypes/vega-text": "^0.1.3"
   }
 }

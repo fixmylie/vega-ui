@@ -1,15 +1,28 @@
 import React from 'react';
-import { block } from 'bem-cn';
+
+import { cnRadioList } from './cn-radio-list';
+import { RadioListItem } from './RadioListItem';
 
 import './RadioList.css';
 
 export type RadioListProps = {
-  title?: string;
   className?: string;
+  children?: React.ReactNode;
 };
 
-const cnRadioList = block('VegaRadioList');
-
-export const RadioList: React.FC<RadioListProps> = ({ title = 'default', className }) => {
-  return <div className={cnRadioList.mix(className)}>Title: {title}</div>;
+type RadioList<T> = React.FC<T> & {
+  Item: typeof RadioListItem;
 };
+
+export const RadioList: RadioList<RadioListProps> = (props) => {
+  const { children, className, ...rest } = props;
+  return (
+    <nav role="navigation">
+      <ul {...rest} className={cnRadioList('RadioList').mix(className)}>
+        {children}
+      </ul>
+    </nav>
+  );
+};
+
+RadioList.Item = RadioListItem;

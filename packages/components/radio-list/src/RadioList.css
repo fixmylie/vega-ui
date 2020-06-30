@@ -1,6 +1,49 @@
 .VegaRadioList {
-  padding: var(--space-xs);
+  position: absolute;
 
-  color: var(--color-typo-primary);
-  background-color: var(--color-bg-secondary);
+  z-index: 100;
+
+  padding: var(--space-s) 0;
+
+  box-sizing: border-box;
+
+  width: 100%;
+
+  background-color: var(--color-bg-default);
+
+  &__ItemButton {
+    padding: 6px var(--space-s);
+
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    cursor: pointer;
+
+    background: transparent;
+    border: 0;
+
+    &:focus-within,
+    &:focus {
+      background: var(--color-bg-stripe);
+      outline: 0;
+    }
+  }
+
+  &__Item {
+    list-style-type: none;
+
+    cursor: pointer;
+
+    &.is-active {
+      background: var(--color-bg-stripe);
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      background: var(--color-bg-stripe);
+    }
+  }
 }
