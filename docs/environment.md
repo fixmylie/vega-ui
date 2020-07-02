@@ -18,11 +18,9 @@
 
 непосредственно в settings.json добавить
 
-```
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true
-  }
-```
+      "editor.codeActionsOnSave": {
+        "source.fixAll": true
+      }
 
 ## WebStorm
 

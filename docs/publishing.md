@@ -65,10 +65,10 @@
     yarn lerna version --conventional-commits --allow-branch=master --no-commit-hooks --no-push --create-release github
 
 5.  Поднять версии у всех пакетов, даже если они не менялись в git. Действие актуально при изменении сборки.
-    yarn lerna version --conventional-commits --allow-branch=master --no-commit-hooks --no-push --create-release github --force-publish`
+    `yarn lerna version --conventional-commits --allow-branch=master --no-commit-hooks --no-push --create-release github --force-publish`
 
 6.  Запустить публикацию пакетов с помощью `lerna`
-    yarn lerna publish from-git --yes --registry https://npm.pkg.github.com/gpn-prototypes
+    yarn lerna publish from-git --yes --registry <https://npm.pkg.github.com/gpn-prototypes>
 
 7.  Запушить коммит и теги в мастер.
     git push origin master --follow-tags
