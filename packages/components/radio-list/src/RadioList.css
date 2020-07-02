@@ -43,7 +43,7 @@
     &:hover {
       cursor: pointer;
 
-      background: var(--color-bg-stripe);
+      background: var(--color-control-bg-clear-hover);
     }
   }
 }
