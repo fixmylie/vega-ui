@@ -2,6 +2,7 @@
   --layout-resizer-size: 2px;
   --layout-z-resizer: 1;
   --layout-z-header: calc(var(--layout-z-resizer) + 1);
+  --layout-z-portal: calc(var(--layout-z-header) + 1);
 }
 
 .VegaLayout {
@@ -134,7 +135,13 @@
     height: 100%;
   }
 
+  &__Menu {
+    z-index: var(--layout-z-portal);
+  }
+
   &__Options {
+    z-index: var(--layout-z-portal);
+
     padding-top: calc(var(--space-m) + 2px);
     padding-bottom: calc(var(--space-m) + 2px);
 
