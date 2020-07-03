@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-export function useMount(fn: Function = (): void => {}): React.RefObject<boolean> {
+export function useMount(fn: Function = (): void => {}): boolean {
   const [isMounted, setIsMounted] = useState(false);
   const fnRef = useRef(fn);
 
