@@ -2,43 +2,49 @@ import React from 'react';
 import { Button } from '@gpn-prototypes/vega-button';
 import { Dropdown } from '@gpn-prototypes/vega-dropdown';
 import { useClose } from '@gpn-prototypes/vega-hooks';
-import { IconKebab } from '@gpn-prototypes/vega-icons';
+import { IconSelect } from '@gpn-prototypes/vega-icons';
 
 import { cnLayout } from '../cn-layout';
 import { PORTAL_LAYOUT_ID } from '../constants';
 
-import { LayoutOptionsList } from './LayoutOptionsList';
+type MenuItem = {
+  value: string;
+  label: string;
+};
 
-export type LayoutOptionsProps = React.ComponentProps<typeof LayoutOptionsList>;
+type LayoutMenuProps = {
+  activeItem: MenuItem;
+  items: MenuItem[];
+  onChange: (item: MenuItem) => void;
+};
 
-export const LayoutOptions: React.FC<LayoutOptionsProps> = (props) => {
-  const { onLayoutChange } = props;
+export const LayoutMenu: React.FC<LayoutMenuProps> = (props) => {
+  const { activeItem, items, onChange } = props;
 
   const { isOpen, setIsOpen, close: closeDropdown } = useClose();
 
   return (
     <Dropdown
-      placement="bottom-end"
-      portalId={PORTAL_LAYOUT_ID}
+      placement="bottom-start"
       isOpen={isOpen}
       onClickOutside={closeDropdown}
-      onToggle={(nextState): void => {
-        setIsOpen(nextState);
-      }}
+      portalId={PORTAL_LAYOUT_ID}
+      onToggle={setIsOpen}
     >
       <Dropdown.Trigger>
         {({ toggle, props: { ref, ...triggerProps } }): React.ReactNode => (
           <Button
             innerRef={ref}
             onClick={toggle}
-            onlyIcon
-            iconSize="s"
-            aria-label="Открыть dropdown"
+            label={activeItem.label}
+            aria-label="Триггер для меню layout"
+            iconRight={IconSelect}
             size="xs"
+            iconSize="xs"
+            className={cnLayout('MenuTrigger', { isMenuOpen: isOpen }).toString()}
             form="brick"
-            view="clear"
-            iconLeft={IconKebab}
             type="button"
+            view="clear"
             {...triggerProps}
           />
         )}
@@ -46,12 +52,7 @@ export const LayoutOptions: React.FC<LayoutOptionsProps> = (props) => {
       <Dropdown.Menu>
         {({ props: menuProps }): React.ReactNode => (
           <div className={cnLayout('Menu')} {...menuProps}>
-            <LayoutOptionsList
-              onLayoutChange={(action): void => {
-                onLayoutChange(action);
-                closeDropdown();
-              }}
-            />
+            {activeItem.label}
           </div>
         )}
       </Dropdown.Menu>

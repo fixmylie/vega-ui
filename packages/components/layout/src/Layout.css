@@ -139,6 +139,18 @@
     z-index: var(--layout-z-portal);
   }
 
+  &__MenuTrigger {
+    > .Icon {
+      transition: transform 0.1s ease;
+    }
+
+    &_isMenuOpen {
+      > .Icon {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
   &__Options {
     z-index: var(--layout-z-portal);
 
