@@ -36,7 +36,7 @@ describe('LayoutOptions', () => {
       fireEvent.click(trigger);
     });
 
-    expect(container.querySelector('.VegaLayout__Options')).toBeInTheDocument();
+    expect(container.querySelector('.VegaLayout__List')).toBeInTheDocument();
   });
 
   test('закрывается по клику на опцию', async () => {
@@ -54,7 +54,7 @@ describe('LayoutOptions', () => {
       fireEvent.click(option);
     });
 
-    expect(container.querySelector('.VegaLayout__Options')).not.toBeInTheDocument();
+    expect(container.querySelector('.VegaLayout__List')).not.toBeInTheDocument();
   });
 
   test.each(labels)('рендерит опцию "%s"', async (label) => {
