@@ -151,7 +151,7 @@
     }
   }
 
-  &__Options {
+  &__List {
     z-index: var(--layout-z-portal);
 
     padding-top: calc(var(--space-m) + 2px);

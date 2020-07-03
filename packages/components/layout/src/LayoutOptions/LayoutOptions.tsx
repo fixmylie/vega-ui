@@ -1,9 +1,7 @@
 import React from 'react';
 import { Button } from '@gpn-prototypes/vega-button';
-import { Dropdown } from '@gpn-prototypes/vega-dropdown';
 import { IconKebab } from '@gpn-prototypes/vega-icons';
 
-import { cnLayout } from '../cn-layout';
 import { LayoutDropdown } from '../LayoutDropdown';
 
 import { LayoutOptionsList } from './LayoutOptionsList';
@@ -16,7 +14,7 @@ export const LayoutOptions: React.FC<LayoutOptionsProps> = (props) => {
   return (
     <LayoutDropdown
       placement="bottom-end"
-      trigger={({ toggle, props: { ref, ...triggerProps}}): React.ReactNode => {
+      trigger={({ toggle, props: { ref, ...triggerProps } }): React.ReactNode => {
         return (
           <Button
             innerRef={ref}
