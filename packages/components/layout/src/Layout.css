@@ -135,7 +135,7 @@
     height: 100%;
   }
 
-  &__Menu {
+  &__MenuWrapper {
     z-index: var(--layout-z-portal);
   }
 
